@@ -18,7 +18,7 @@ Unlike standard lobby plugins, CCLobby implements a custom **Plugin Messaging Pr
 * **🛠️ Administration Tools:**
     * `/openserv`: Command to remotely trigger the startup of UHC game servers.
     * `/setgrade`: Integrated rank and permission management system.
-* **🔌 Custom Channel Implementation:** Listens on the custom `CCChannel` to handle incoming data streams securely.
+* **🔌 Custom Channel Implementation:** Listens on the custom `CCChannel` to handle incoming data streams.
 
 ## 💻 Technical Highlights
 
@@ -41,3 +41,13 @@ public void onPluginMessageReceived(String channel, Player player, byte[] bytes)
         }
     }
 }
+
+```
+
+## Development and installation limits
+
+The sources are under `fr/nozkay/`, with `plugin.yml` at the repository root. The code requires Bukkit/Spigot and Guava. There is no Maven/Gradle build or bundled server dependency; configure those dependencies in your Java development environment before packaging a plugin JAR.
+
+`Main.java` registers `/setgrade`, `/openserv`, and the incoming/outgoing `CCChannel` messaging channel. Network features require a compatible proxy implementation of that protocol. The channel name alone is not an authentication or security guarantee.
+
+Compilation and operation on a Minecraft network have not been verified in this documentation review.
